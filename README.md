@@ -1,0 +1,1 @@
+# skaffold-docker-hook-bug
