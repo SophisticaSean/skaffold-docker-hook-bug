@@ -1,0 +1,15 @@
+apiVersion: skaffold/v4beta1
+kind: Config
+metadata:
+  name: skaffold-bug
+build:
+  artifacts:
+  - image: example
+    context: example
+    hooks:
+      before:
+      - command: ["bash", "-c", "./example/skaffold_before_hook.sh"]
+  local:
+    concurrency: 0
+    tryImportMissing: false # THIS HAS TO BE FALSE OR CACHE BUSTING WONT WORK
+    useDockerCLI: false # THIS HAS TO BE TRUE OR THE BEFORE SCRIPT WONT WORK
